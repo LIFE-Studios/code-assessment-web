@@ -1,35 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
+import styled from 'styled-components/macro'
 
+const StyledProductItem = styled.div`
+  padding: 10px 0;
+`
+const StyledButton = styled.button`
+  padding: 5px;
+  margin: 5px;
+`
 const ProductItem = ({
   product,
   onAddToCartClicked,
   onRemoveItemFromCartClicked,
   onRemoveFromCartClicked
 }) => (
-  <div style={{ marginBottom: 20 }}>
+  <StyledProductItem>
     <Product
       title={product.title}
       price={product.price}
       inventory={product.inventory} />
 
-    <button
+    <StyledButton
       onClick={onAddToCartClicked}
       disabled={product.inventory > 0 ? '' : 'disabled'}>
       {product.inventory > 0 ? '+' : 'Sold Out'}
-    </button>
-    <button
+    </StyledButton>
+    <StyledButton
       onClick={onRemoveItemFromCartClicked}
       disabled={product.inventory < product.max ? '' : 'disabled'}>
       -
-    </button>
-    <button
+    </StyledButton>
+    <StyledButton
       onClick={onRemoveFromCartClicked}
       disabled={product.inventory < product.max ? '' : 'disabled'}>
       remove
-    </button>
-  </div>
+    </StyledButton>
+  </StyledProductItem>
   )
 
 ProductItem.propTypes = {

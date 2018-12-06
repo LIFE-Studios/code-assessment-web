@@ -1,15 +1,19 @@
 import React from 'react'
+import Header from '../components/header'
 import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
-
+import styled from 'styled-components/macro'
+const AppContainer = styled.div`
+  width: 100%;
+`
 const App = () => (
-  <div>
-    <h2>Shopping Cart Example</h2>
-    <hr/>
-    <ProductsContainer />
+  <AppContainer>
+    <Header />
+    <hr />
+    <ProductsContainer />    
     <hr/>
     <CartContainer />
-  </div>
+  </AppContainer>
 )
 
 export default App

@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
-
 const Cart  = ({ 
   products, 
   total, 
-  onCheckoutClicked 
+  onCheckoutClicked,
+  quantity 
 }) => {
   const hasProducts = products.length > 0
   const cartItems = hasProducts ? (
@@ -25,7 +25,8 @@ const Cart  = ({
     <div>
       <h3>Your Cart</h3>
       <div>{cartItems}</div>
-      <p>Total: &#36;{total}</p>
+      <p>Total items: {quantity}</p>
+      <p>Total cost: &#36;{total}</p>
       <button onClick={onCheckoutClicked}
         disabled={hasProducts ? '' : 'disabled'}>
         Checkout
@@ -37,6 +38,7 @@ const Cart  = ({
 Cart.propTypes = {
   products: PropTypes.array,
   total: PropTypes.string,
+  quantity: PropTypes.number,
   onCheckoutClicked: PropTypes.func
 }
 
