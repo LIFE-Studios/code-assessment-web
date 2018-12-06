@@ -2,9 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
 
-const Cart  = ({ products, total, onCheckoutClicked }) => {
+const Cart  = ({ 
+  products, 
+  total, 
+  onCheckoutClicked 
+}) => {
   const hasProducts = products.length > 0
-  const nodes = hasProducts ? (
+  const cartItems = hasProducts ? (
     products.map(product =>
       <Product
         title={product.title}
@@ -20,7 +24,7 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
   return (
     <div>
       <h3>Your Cart</h3>
-      <div>{nodes}</div>
+      <div>{cartItems}</div>
       <p>Total: &#36;{total}</p>
       <button onClick={onCheckoutClicked}
         disabled={hasProducts ? '' : 'disabled'}>

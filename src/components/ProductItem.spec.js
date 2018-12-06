@@ -5,7 +5,9 @@ import ProductItem from './ProductItem'
 
 const setup = product => {
   const actions = {
-    onAddToCartClicked: jest.fn()
+    onAddToCartClicked: jest.fn(),
+    onRemoveItemFromCartClicked: jest.fn(),
+    onRemoveFromCartClicked: jest.fn()
   }
 
   const component = shallow(
@@ -27,7 +29,8 @@ describe('ProductItem component', () => {
     productProps = {
       title: 'Product 1',
       price: 9.99,
-      inventory: 6
+      inventory: 6,
+      max: 99
     }
   })
 
@@ -36,19 +39,21 @@ describe('ProductItem component', () => {
     expect(product.props()).toEqual({ title: 'Product 1', price: 9.99, inventory: 6 })
   })
 
-  it('should render Add To Cart message', () => {
+  it('should render button labels', () => {
     const { button } = setup(productProps)
-    expect(button.text()).toMatch(/^Add to cart/)
+    expect(button.at(0).text()).toMatch('+')
+    expect(button.at(1).text()).toMatch('-')
+    expect(button.at(2).text()).toMatch('remove')
   })
 
-  it('should not disable button', () => {
+  it('should not disable button add item button', () => {
     const { button } = setup(productProps)
-    expect(button.prop('disabled')).toEqual('')
+    expect(button.at(0).prop('disabled')).toEqual('')
   })
 
-  it('should call action on button click', () => {
+  it('should call action on add item button click', () => {
     const { button, actions } = setup(productProps)
-    button.simulate('click')
+    button.at(0).simulate('click')
     expect(actions.onAddToCartClicked).toBeCalled()
   })
 
@@ -59,12 +64,12 @@ describe('ProductItem component', () => {
 
     it('should render Sold Out message', () => {
       const { button } = setup(productProps)
-      expect(button.text()).toMatch(/^Sold Out/)
+      expect(button.at(0).text()).toMatch(/^Sold Out/)
     })
 
     it('should disable button', () => {
       const { button } = setup(productProps)
-      expect(button.prop('disabled')).toEqual('disabled')
+      expect(button.at(0).prop('disabled')).toEqual('disabled')
     })
   })
 })

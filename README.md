@@ -9,3 +9,7 @@ Scripts:
 npm start
 ```
 
+### Added features
+
+* Remove single item from cart
+* Remove all items from cart
