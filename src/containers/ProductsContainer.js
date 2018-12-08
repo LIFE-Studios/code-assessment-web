@@ -8,7 +8,8 @@ import ProductsList from '../components/cart/ProductsList'
 
 const ProductsContainer = ({
   products,
-  addToCart, removeItemFromCart,
+  addToCart, 
+  removeItemFromCart,
   removeFromCart
 }) => (
 <ProductsList>

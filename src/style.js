@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components/macro'
 const GlobalStyle = createGlobalStyle`
-
 * {
   margin: 0;
   padding: 0;  
@@ -12,10 +11,8 @@ html {
   font-size: 16px;
 }
 
-img {
-  max-width: 100%;
-  height: inherit;
+body {
+  background: #F2F4F7;
 }
 `
-
 export default GlobalStyle

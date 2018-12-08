@@ -2,29 +2,43 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import Basket from '../cart/Basket'
 import Counter from '../cart/Counter'
+import { breakpoints } from '../../breakpoints'
 
-const StyledDiv = styled.div`
-  align-items: center;
+const StyledDiv = styled.div`  
   display: flex;
+  flex-direction: column;
   height: 100%;
+  @media ${breakpoints.tablet} {
+    align-items: center;
+    flex-direction: row;
+  }
 `
 const StyledHeader = styled.h2`
   flex: 1;
-  font-size: 3.18rem;  
+  font-size: 1.75rem;
+  font-weight: normal;
+  letter-spacing: -0.59px;
+  @media ${breakpoints.tablet} {
+    font-size: 2.375rem;
+    letter-spacing: -0.8px;    
+  }
+  @media ${breakpoints.laptop} {
+    font-size: 3.18rem;
+    letter-spacing: -1.07px;
+  }  
 `
-const Cart = styled.div`
+const MiniCart = styled.div`
   align-items: center;
   display: flex;
   height: 100%;
 `
-
-const Header = () => (
+const Header = ({ txt }) => (
   <StyledDiv>
-    <StyledHeader>Acme Store</StyledHeader>
-    <Cart>      
-      <Basket height="16px" width="18px" />
+    <StyledHeader>{txt}</StyledHeader>
+    <MiniCart>      
+      <Basket />
       <Counter />
-    </Cart>
+    </MiniCart>
   </StyledDiv>
 )
 

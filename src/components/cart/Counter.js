@@ -2,10 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getCartTotalItems } from '../../reducers'
 import styled from 'styled-components/macro'
+import { breakpoints } from '../../breakpoints'
 
 const StyledDiv = styled.div`
   flex: 1;
-  font-size: 0.875rem;  
+  font-size: 0.75rem;
+  @media ${breakpoints.laptop} {
+    font-size: 0.875rem;
+  }    
 `
 const Counter = ({
   quantity
