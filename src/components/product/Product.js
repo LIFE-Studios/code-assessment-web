@@ -84,11 +84,19 @@ const Inventory = styled.p`
   }  
 `
 const Button = styled.button`
-  background: #407FC0;
+  background: ${props => props.disabled ? '#5E97D1' : '#5E97D1'};
   border-radius: 20px;
   color: #fff;  
-  padding: 10px 15px;
+  cursor: pointer;
+  padding: 10px 15px;  
   text-transform: uppercase;
+  :hover {
+    background: ${props => props.disabled ? '#5E97D1' : '#407FC0'};
+  }
+  :disabled {
+    cursor: inherit;
+    opacity: 0.5;
+  }
 `
 const ButtonRow = styled.div`
   align-items: flex-end;
@@ -105,7 +113,8 @@ const ProductRow = ({
   price,
   inventory,
   title,
-  quantity
+  quantity,
+  onAddToCartClicked
 }) => 
 <Row>  
   <StyledDiv>
@@ -123,7 +132,10 @@ const ProductRow = ({
     {quantity ? ` x ${quantity} items in cart` : null}
   </div>  
   <ButtonRow>
-    <Button>Add to Cart</Button>
+    <Button 
+      disabled={inventory > 0 ? '' : 'disabled'}
+      onClick={onAddToCartClicked}
+    >Add to Cart</Button>
   </ButtonRow>
 </Row>
 
@@ -138,7 +150,8 @@ Product.propTypes = {
   price: PropTypes.number,
   inventory: PropTypes.number,
   quantity: PropTypes.number,
-  title: PropTypes.string
+  title: PropTypes.string,
+  onAddToCartClicked: PropTypes.func
 }
 
 export default Product

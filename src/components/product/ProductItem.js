@@ -20,8 +20,9 @@ const ProductItem = ({
   onRemoveItemFromCartClicked,
   onRemoveFromCartClicked
 }) => (
-  <StyledProductItem>
+  <StyledProductItem>    
     <Product
+      onAddToCartClicked={onAddToCartClicked}
       title={product.title}
       price={product.price}
       inventory={product.inventory} />
