@@ -10,6 +10,10 @@ const StyledButton = styled.button`
   padding: 5px;
   margin: 5px;
 `
+const StyledButons = styled.div`
+  padding: 10px 0;
+  width: 100%;
+`
 const ProductItem = ({
   product,
   onAddToCartClicked,
@@ -21,22 +25,26 @@ const ProductItem = ({
       title={product.title}
       price={product.price}
       inventory={product.inventory} />
+    <StyledButons>
+      <StyledButton
+        onClick={onAddToCartClicked}
+        disabled={product.inventory > 0 ? '' : 'disabled'}>
+        {product.inventory > 0 ? '+' : 'Sold Out'}
+      </StyledButton>
 
-    <StyledButton
-      onClick={onAddToCartClicked}
-      disabled={product.inventory > 0 ? '' : 'disabled'}>
-      {product.inventory > 0 ? '+' : 'Sold Out'}
-    </StyledButton>
-    <StyledButton
-      onClick={onRemoveItemFromCartClicked}
-      disabled={product.inventory < product.max ? '' : 'disabled'}>
-      -
-    </StyledButton>
-    <StyledButton
-      onClick={onRemoveFromCartClicked}
-      disabled={product.inventory < product.max ? '' : 'disabled'}>
-      remove
-    </StyledButton>
+      <StyledButton
+        onClick={onRemoveItemFromCartClicked}
+        disabled={product.inventory < product.max ? '' : 'disabled'}>
+        -
+      </StyledButton>
+      
+      <StyledButton
+        onClick={onRemoveFromCartClicked}
+        disabled={product.inventory < product.max ? '' : 'disabled'}>
+        remove
+      </StyledButton>
+    </StyledButons>
+
   </StyledProductItem>
   )
 

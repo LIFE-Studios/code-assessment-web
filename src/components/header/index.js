@@ -18,6 +18,7 @@ const StyledHeader = styled.h2`
   font-size: 1.75rem;
   font-weight: normal;
   letter-spacing: -0.59px;
+  padding: 20px 0 0;
   @media ${breakpoints.tablet} {
     font-size: 2.375rem;
     letter-spacing: -0.8px;    

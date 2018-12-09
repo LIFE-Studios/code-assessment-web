@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Product from './Product'
+import Product from '../product/Product'
 const Cart  = ({ 
   products, 
   total, 
@@ -8,6 +8,7 @@ const Cart  = ({
   quantity 
 }) => {
   const hasProducts = products.length > 0
+  
   const cartItems = hasProducts ? (
     products.map(product =>
       <Product
