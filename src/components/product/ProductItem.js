@@ -21,11 +21,14 @@ const ProductItem = ({
   onRemoveFromCartClicked
 }) => (
   <StyledProductItem>    
+    
     <Product
       onAddToCartClicked={onAddToCartClicked}
+      id={product.id}
       title={product.title}
       price={product.price}
       inventory={product.inventory} />
+    
     <StyledButons>
       <StyledButton
         onClick={onAddToCartClicked}

@@ -4,6 +4,7 @@ import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
 import styled from 'styled-components/macro'
 import { breakpoints } from '../breakpoints'
+import { LineBreak } from '../components/LineBreak'
 
 const AppContainer = styled.div`
   padding: 1rem;
@@ -13,11 +14,6 @@ const AppContainer = styled.div`
   @media ${breakpoints.tablet} {
     padding: 5rem;
   }  
-`
-const LineBreak = styled.hr`
-  border: 1px solid;
-  color: #D8D8D8;
-  margin: 20px 0;
 `
 const App = () => (
   <AppContainer>    
