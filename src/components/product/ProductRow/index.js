@@ -5,7 +5,7 @@ import { breakpoints } from '../../../breakpoints'
 import Inventory from '../Inventory'
 import TitlePrice from '../TitlePrice'
 import AddToCart from '../AddToCart'
-import Quantity from '../Quantity'
+import RemoveItem from '../RemoveItem'
 
 const Row = styled.div`
   background: #fff;
@@ -13,27 +13,37 @@ const Row = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 2rem 1.25rem;
+  padding: ${props => props.cart ? '0.125rem 0.875rem' : ' 2rem 1.25rem'};
   @media ${breakpoints.tablet} {
-    padding: 2.4rem 2.4rem;
+    padding: ${props => props.cart ? '0 0.875rem' : '2rem 2.4rem'};
   }
   @media ${breakpoints.laptop} {
-    padding: 2rem 4.7rem 2rem 3rem;
+    padding: ${props => props.cart ? '0 0.875rem' : '2rem 4.7rem 2rem 3rem'};
   }
 `
-const ProductRow = ({  
+const ProductRow = ({
+  cart,  
   inventory,
   price,
   title,
-  quantity,
-  onAddToCartClicked
+  onAddToCartClicked,
+  onRemoveFromCartClicked
 }) => (
-  <Row>
-    <TitlePrice title={title} price={price} />
-    <Inventory inventory={inventory} />
-    <Quantity quantity={quantity} />
-    <AddToCart inventory={inventory}
-      onAddToCartClicked={onAddToCartClicked} />
+  <Row cart={cart}>    
+    <TitlePrice cart={cart} title={title} price={price} />    
+    
+    {!cart && 
+      <Inventory inventory={inventory} />
+    }        
+
+    {!cart && 
+      <AddToCart inventory={inventory}
+        onAddToCartClicked={onAddToCartClicked} />
+    }
+
+    {cart && 
+      <RemoveItem onRemoveFromCartClicked={onRemoveFromCartClicked} />
+    }
   </Row>
 )
 
@@ -42,7 +52,8 @@ ProductRow.propTypes = {
   price: PropTypes.number,  
   title: PropTypes.string,
   quantity: PropTypes.number,  
-  onAddToCartClicked: PropTypes.func
+  onAddToCartClicked: PropTypes.func,
+  onRemoveFromCartClicked: PropTypes.func
 }
 
-export default ProductRow  
+export default ProductRow 

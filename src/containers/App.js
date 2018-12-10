@@ -7,6 +7,7 @@ import { breakpoints } from '../breakpoints'
 import { LineBreak } from '../components/LineBreak'
 
 const AppContainer = styled.div`
+  background: #F2F4F7;
   padding: 1rem;
   @media ${breakpoints.tablet} {
     padding: 3.125rem;
@@ -16,13 +17,14 @@ const AppContainer = styled.div`
   }  
 `
 const App = () => (
-  <AppContainer>    
-    <Header txt="Acme Store"/>
-    <LineBreak />    
-    <ProductsContainer />    
-    <LineBreak />    
+  <div>
     <CartContainer />
-  </AppContainer>
+    <AppContainer>    
+      <Header txt="Acme Store"/>
+      <LineBreak />    
+      <ProductsContainer />           
+    </AppContainer>
+  </div>
 )
 
 export default App

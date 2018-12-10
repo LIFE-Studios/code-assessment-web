@@ -9,8 +9,5 @@ html {
   font-family: 'arial', sans-serif;
   font-size: 16px;
 }
-body {
-  background: #F2F4F7;
-}
 `
 export default GlobalStyle

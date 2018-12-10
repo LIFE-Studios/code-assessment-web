@@ -5,21 +5,23 @@ import { breakpoints } from '../../../breakpoints'
 
 const Img = styled.img`
   border-radius: 0 5px 0 0; 
-  max-width: 100%;
+  max-width: ${props => props.cart ? '156px;' : '100%'};
   height: inherit;
-  width: 100%;
+  width: ${props => props.cart ? '25%' : '100%'};
+  
   @media ${breakpoints.tablet} {
     border-radius: 0;
-    max-width: 272px;
+    max-width: ${props => props.cart ? '156px' : '282px;'};
     height: auto;
   }
   @media ${breakpoints.laptop} {
-    max-width: 33%;
+    max-width: ${props => props.cart ? '156px' : '455px;'};
     height: auto;
   }
 `
-const ProductImg = ({ title }) => 
-  <Img 
+const ProductImg = ({ title, cart }) => 
+  <Img
+    cart={cart}
     src={`./imgs/${title.toLowerCase()}.jpg`} 
     alt='' 
   />

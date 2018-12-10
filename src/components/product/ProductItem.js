@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Product from './Product'
+import Product from './'
 import styled from 'styled-components/macro'
 
 const StyledProductItem = styled.div`
@@ -15,6 +15,7 @@ const StyledButons = styled.div`
   width: 100%;
 `
 const ProductItem = ({
+  cart,
   product,
   onAddToCartClicked,
   onRemoveItemFromCartClicked,
@@ -24,31 +25,29 @@ const ProductItem = ({
     
     <Product
       onAddToCartClicked={onAddToCartClicked}
+      onRemoveFromCartClicked={onRemoveFromCartClicked}
+      cart={cart}
       id={product.id}
       title={product.title}
       price={product.price}
       inventory={product.inventory} />
     
-    <StyledButons>
-      <StyledButton
-        onClick={onAddToCartClicked}
-        disabled={product.inventory > 0 ? '' : 'disabled'}>
-        {product.inventory > 0 ? '+' : 'Sold Out'}
-      </StyledButton>
+    {cart &&
+      <StyledButons>
+        <StyledButton
+          onClick={onAddToCartClicked}
+          disabled={product.inventory > 0 ? '' : 'disabled'}>
+          {product.inventory > 0 ? '+' : 'Sold Out'}
+        </StyledButton>
 
-      <StyledButton
-        onClick={onRemoveItemFromCartClicked}
-        disabled={product.inventory < product.max ? '' : 'disabled'}>
-        -
-      </StyledButton>
-      
-      <StyledButton
-        onClick={onRemoveFromCartClicked}
-        disabled={product.inventory < product.max ? '' : 'disabled'}>
-        remove
-      </StyledButton>
-    </StyledButons>
-
+        <StyledButton
+          onClick={onRemoveItemFromCartClicked}
+          disabled={product.inventory < product.max ? '' : 'disabled'}>
+          -
+        </StyledButton>        
+      </StyledButons>
+    }
+    
   </StyledProductItem>
   )
 

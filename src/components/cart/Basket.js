@@ -2,6 +2,7 @@ import React from 'react'
 import Icon from './icon-basket.png'
 import styled from 'styled-components/macro'
 import { breakpoints } from '../../breakpoints'
+
 const StyledBasket = styled.div`
   padding: 0.5rem 0.5rem 0.5rem 0;
   @media ${breakpoints.tablet} {
@@ -9,14 +10,18 @@ const StyledBasket = styled.div`
   }  
 `
 const Img = styled.img`
-  height: 14px;
+  height: ${props => props.cart ? '46px;' : '14px;'};
   @media ${breakpoints.tablet} {
-  height: 16px;  
+    height: ${props => props.cart ? '56px;' : '16px;'};
   }
 `
-const Basket = () => (
+const Basket = ({ cart }) => (
 <StyledBasket>
-  <Img src={Icon} alt="Items in your cart" />
+  <Img
+    cart={cart}
+    src={Icon} 
+    alt="Items in your cart" 
+  />
 </StyledBasket>
 )
 

@@ -7,7 +7,7 @@ import {
   removeFromCart 
 } from '../actions'
 import { getVisibleProducts } from '../reducers/products'
-import ProductItem from '../components/product/ProductItem'
+import ProductItem from '../components/Product/ProductItem'
 
 const ProductsContainer = ({
   products,

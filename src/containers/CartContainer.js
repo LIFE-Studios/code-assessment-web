@@ -19,7 +19,8 @@ const CartContainer = ({
     quantity={quantity}
     products={products}
     total={total}
-    onCheckoutClicked={() => checkout(products)} />
+    onCheckoutClicked={() => checkout(products)} 
+  />
 )
 
 CartContainer.propTypes = {
