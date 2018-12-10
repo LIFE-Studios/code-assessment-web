@@ -20,7 +20,8 @@ export const getTotal = state =>
     )
     .toFixed(2)
 
-export const getCartTotalItems = state => getCartItems(state).reduce((a, b) => a + b, 0)
+export const getCartTotalItems = state => 
+  getCartItems(state).reduce((a, b) => a + b, 0)
    
 export const getCartProducts = state =>
   getAddedIds(state).map(id => ({

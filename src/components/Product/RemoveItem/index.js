@@ -5,11 +5,13 @@ import styled from 'styled-components/macro'
 const Container = styled.div`
   align-items: flex-end;  
   display: flex;
-  font-size: 0.875rem;
   margin-top: auto;  
 `
-const RemoveLink = styled.a`
+const RemoveLink = styled.button`
+  border: none;
   color: #CC1D39; 
+  cursor: pointer;
+  font-size: 0.875rem;
   text-decoration: none;
   :hover {
     text-decoration: underline;
@@ -26,7 +28,6 @@ const RemoveItem = ({
     >Remove</RemoveLink>
   </Container>  
 )
-
 
 RemoveItem.propTypes = {
   onRemoveFromCartClicked: PropTypes.func.isRequired

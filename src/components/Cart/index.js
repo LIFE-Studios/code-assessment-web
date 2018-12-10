@@ -6,33 +6,45 @@ import { LineBreak } from '../../components/LineBreak'
 import Checkout from './Checkout'
 import LineItem from './LineItem'
 import Empty from './Empty'
+import Header from './Header'
 import ProductItem from '../../components/Product/ProductItem'
-
 import { 
   addToCart,
   removeItemFromCart,   
   removeFromCart 
 } from '../../actions'
 
+const Wrapper = styled.div`
+  top: ${props => props.toggle ? '0' : '-110%'};
+  position: absolute;
+  transition: top 300ms ease-in-out;
+  left: 0;
+  width: 100%;  
+`
 const Container = styled.div`
   background: #fff;
-  height: 100vh;
-  padding: 3rem 1rem;
+  height: 100vh;  
 `
-
+const Inner = styled.div`
+  height: calc(100% - 12rem);  
+  overflow-y: scroll;
+  padding: 0 1rem;
+`
 const Cart  = ({ 
   products, 
-  total, 
+  total,
+  toggle, 
   onCheckoutClicked,
   addToCart,
   removeItemFromCart,
   removeFromCart
 }) => {
-  const hasProducts = products.length > 0  
-  const cartItems = (
+  const hasProducts = products.length > 0    
+  const CartItems = (
     products.map(product =>
       <ProductItem
-        cart
+        cart        
+        quantity={product.quantity}
         key={product.id}
         product={product}
         onAddToCartClicked={() => addToCart(product.id)}
@@ -42,29 +54,31 @@ const Cart  = ({
     )
   )
   return (
-    <div>
+    <Wrapper toggle={toggle}>
       <Container>
-        <h3>Your Cart</h3>    
-        <LineBreak />
-        {hasProducts ? 
-          (<div>
-            {cartItems}
-            <LineBreak />
-            <LineItem title="Subtotal" total={total} />
-            <LineItem title="Taxes" total={total} />      
-            <LineBreak />        
-            <LineItem title="Total" total={total} />
-          </div>)
-          : (
-            <Empty />
-          )
-        }
+        <Header /> 
+        <Inner>           
+          <LineBreak />
+          {hasProducts ? 
+            (<div>
+              {CartItems}
+              <LineBreak />
+              <LineItem title="Subtotal" total={total} />
+              <LineItem title="Taxes" total={(total * 0.0875).toFixed(2)} />      
+              <LineBreak />        
+              <LineItem title="Total" total={(Number(total) + Number(total * 0.0875)).toFixed(2)} />
+            </div>)
+            : (
+              <Empty />
+            )
+          }
+        </Inner>
       </Container>
       <Checkout 
         disabled={hasProducts} 
         onCheckoutClicked={onCheckoutClicked}
       />
-    </div>
+    </Wrapper>
   )
 }
 
@@ -75,7 +89,9 @@ Cart.propTypes = {
   onCheckoutClicked: PropTypes.func
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  toggle: state.cart.toggle
+})
 
 export default connect(
   mapStateToProps,

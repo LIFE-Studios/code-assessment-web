@@ -1,5 +1,6 @@
 import {
   ADD_TO_CART,
+  TOGGLE_CART,
   REMOVE_ITEM_FROM_CART,
   REMOVE_FROM_CART,
   CHECKOUT_REQUEST,
@@ -8,7 +9,8 @@ import {
 
 const initialState = {
   addedIds: [],
-  quantityById: {}
+  quantityById: {},
+  toggle: false
 }
 
 const removeProperty = (obj, property) => {
@@ -68,6 +70,11 @@ export const getAddedIds = state => state.addedIds
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
+    case TOGGLE_CART:
+      return {
+        ...state,
+        toggle: !state.toggle
+      }
     case CHECKOUT_REQUEST:
       return initialState
     case CHECKOUT_FAILURE:
@@ -75,7 +82,8 @@ const cart = (state = initialState, action) => {
     default:
       return {
         addedIds: addedIds(state.addedIds, action),
-        quantityById: quantityById(state.quantityById, action)
+        quantityById: quantityById(state.quantityById, action),
+        toggle: state.toggle
       }
   }
 }

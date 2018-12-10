@@ -1,28 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Product from './'
+import Product from '..'
 import styled from 'styled-components/macro'
+import CartButtons from '../CartButtons'
 
-const StyledProductItem = styled.div`
+const Container = styled.div`   
   padding: 10px 0;
-`
-const StyledButton = styled.button`
-  padding: 5px;
-  margin: 5px;
-`
-const StyledButons = styled.div`
-  padding: 10px 0;
-  width: 100%;
 `
 const ProductItem = ({
   cart,
   product,
+  quantity,
   onAddToCartClicked,
   onRemoveItemFromCartClicked,
   onRemoveFromCartClicked
 }) => (
-  <StyledProductItem>    
-    
+  <Container>        
     <Product
       onAddToCartClicked={onAddToCartClicked}
       onRemoveFromCartClicked={onRemoveFromCartClicked}
@@ -30,28 +23,21 @@ const ProductItem = ({
       id={product.id}
       title={product.title}
       price={product.price}
-      inventory={product.inventory} />
-    
-    {cart &&
-      <StyledButons>
-        <StyledButton
-          onClick={onAddToCartClicked}
-          disabled={product.inventory > 0 ? '' : 'disabled'}>
-          {product.inventory > 0 ? '+' : 'Sold Out'}
-        </StyledButton>
-
-        <StyledButton
-          onClick={onRemoveItemFromCartClicked}
-          disabled={product.inventory < product.max ? '' : 'disabled'}>
-          -
-        </StyledButton>        
-      </StyledButons>
-    }
-    
-  </StyledProductItem>
-  )
+      inventory={product.inventory} />    
+    {cart && 
+      <CartButtons
+        inventory={product.inventory}
+        max={product.max}
+        quantity={quantity}  
+        onAddToCartClicked={onAddToCartClicked}
+        onRemoveItemFromCartClicked={onRemoveItemFromCartClicked}
+      />
+    }    
+  </Container>
+)
 
 ProductItem.propTypes = {
+  quantity: PropTypes.number,
   product: PropTypes.shape({
     inventory: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,

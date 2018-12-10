@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Icon from './icon-basket.png'
 import styled from 'styled-components/macro'
-import { breakpoints } from '../../breakpoints'
+import { breakpoints } from '../../../breakpoints'
 
 const StyledBasket = styled.div`
   padding: 0.5rem 0.5rem 0.5rem 0;
@@ -15,7 +16,9 @@ const Img = styled.img`
     height: ${props => props.cart ? '56px;' : '16px;'};
   }
 `
-const Basket = ({ cart }) => (
+const Basket = ({ 
+  cart 
+}) => (
 <StyledBasket>
   <Img
     cart={cart}
@@ -24,5 +27,9 @@ const Basket = ({ cart }) => (
   />
 </StyledBasket>
 )
+
+Basket.propTypes = {
+  cart: PropTypes.bool,
+}
 
 export default Basket

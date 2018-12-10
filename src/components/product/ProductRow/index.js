@@ -33,17 +33,14 @@ const ProductRow = ({
     <TitlePrice cart={cart} title={title} price={price} />    
     
     {!cart && 
-      <Inventory inventory={inventory} />
-    }        
+      <Inventory inventory={inventory} />}        
 
     {!cart && 
       <AddToCart inventory={inventory}
-        onAddToCartClicked={onAddToCartClicked} />
-    }
+        onAddToCartClicked={onAddToCartClicked} />}
 
     {cart && 
-      <RemoveItem onRemoveFromCartClicked={onRemoveFromCartClicked} />
-    }
+      <RemoveItem onRemoveFromCartClicked={onRemoveFromCartClicked} />}
   </Row>
 )
 

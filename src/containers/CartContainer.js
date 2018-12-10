@@ -5,15 +5,15 @@ import { checkout } from '../actions'
 import { 
   getTotal, 
   getCartTotalItems,  
-  getCartProducts 
+  getCartProducts
 } from '../reducers'
-import Cart from '../components/cart/Cart'
+import Cart from '../components/Cart'
 
 const CartContainer = ({ 
   products, 
   total, 
   quantity, 
-  checkout 
+  checkout
 }) => (
   <Cart
     quantity={quantity}

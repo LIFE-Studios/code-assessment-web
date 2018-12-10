@@ -1,8 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import Basket from '../cart/Basket'
-import Counter from '../cart/Counter'
+import { connect } from 'react-redux'
+import Basket from '../Cart/Basket'
+import Counter from '../Cart/Counter'
 import { breakpoints } from '../../breakpoints'
+import { toggleCart } from '../../actions'
 
 const StyledDiv = styled.div`  
   display: flex;
@@ -30,17 +33,30 @@ const StyledHeader = styled.h2`
 `
 const MiniCart = styled.div`
   align-items: center;
+  cursor: pointer;
   display: flex;
   height: 100%;
 `
-const Header = ({ txt }) => (
+
+const Header = ({ 
+  txt,
+  toggleCart
+}) => (
   <StyledDiv>
     <StyledHeader>{txt}</StyledHeader>
-    <MiniCart>      
+      <MiniCart onClick={() => toggleCart()}>      
       <Basket />
       <Counter />
     </MiniCart>
   </StyledDiv>
 )
 
-export default Header
+Header.propTypes = {
+  txt: PropTypes.string,
+  toggleCart: PropTypes.func.isRequired
+}
+
+export default connect(
+  null,
+  { toggleCart }
+)(Header)

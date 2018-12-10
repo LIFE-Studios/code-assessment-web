@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Product from './Product'
-import ProductItem from './ProductItem'
+import Product from '..'
+import ProductItem from '.'
 
 const setup = product => {
   const actions = {

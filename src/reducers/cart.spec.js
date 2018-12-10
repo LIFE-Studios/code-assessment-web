@@ -4,7 +4,8 @@ describe('reducers', () => {
   describe('cart', () => {
     const initialState = {
       addedIds: [],
-      quantityById: {}
+      quantityById: {},
+      toggle: false
     }
 
     it('should provide the initial state', () => {

@@ -39,7 +39,6 @@ export const removeItemFromCart = productId => (dispatch, getState) => {
   }
 }
 
-
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
   dispatch({
@@ -52,5 +51,13 @@ export const checkout = products => (dispatch, getState) => {
     })
     // Replace the line above with line below to rollback on failure:
     // dispatch({ type: types.CHECKOUT_FAILURE, cart })
+  })
+}
+
+export const toggleCart = () => (dispatch, getState) => {
+  const { toggle } = getState().cart
+  dispatch({
+    type: types.TOGGLE_CART,
+    toggle
   })
 }

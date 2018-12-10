@@ -18,7 +18,7 @@ const Button = styled.button`
     opacity: 0.5;
   }
 `
-const ButtonRow = styled.div`
+const Container = styled.div`
   align-items: flex-end;
   display: flex;
   margin-top: 20px;
@@ -31,12 +31,12 @@ const AddToCartButton = ({
   inventory,
   onAddToCartClicked 
 }) => (
-  <ButtonRow>
+  <Container>
     <Button
       disabled={inventory > 0 ? '' : 'disabled'}
       onClick={onAddToCartClicked}
     >Add to Cart</Button>
-  </ButtonRow>
+  </Container>
 )
 
 AddToCartButton.propTypes = {
