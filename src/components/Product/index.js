@@ -28,11 +28,12 @@ const Product = (product) => (
 )
 
 Product.propTypes = {
-  price: PropTypes.number,
-  inventory: PropTypes.number,
-  quantity: PropTypes.number,
-  title: PropTypes.string,
-  onAddToCartClicked: PropTypes.func
+  product: PropTypes.shape({
+    inventory: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired
+  })
 }
 
 export default Product

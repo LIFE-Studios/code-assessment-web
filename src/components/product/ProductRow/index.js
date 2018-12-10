@@ -45,6 +45,7 @@ const ProductRow = ({
 )
 
 ProductRow.propTypes = {
+  cart: PropTypes.bool,
   inventory: PropTypes.number,
   price: PropTypes.number,  
   title: PropTypes.string,

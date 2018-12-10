@@ -7,7 +7,6 @@ import CartContainer from './CartContainer'
 import styled from 'styled-components/macro'
 import { breakpoints } from '../breakpoints'
 import { LineBreak } from '../components/LineBreak'
-import { toggleCart } from '../actions'
 
 const Wrapper = styled.div`
   overflow: ${props => props.toggle ? 'hidden' : 'inherit'};
@@ -29,7 +28,7 @@ const App = ({
 }) => (
   <Wrapper toggle={toggle}>
     <AppContainer>    
-      <Header toggleCart={toggleCart} txt="Acme Store"/>
+      <Header />
       <LineBreak />    
       <ProductsContainer />           
     </AppContainer>

@@ -39,11 +39,10 @@ const MiniCart = styled.div`
 `
 
 const Header = ({ 
-  txt,
   toggleCart
 }) => (
   <StyledDiv>
-    <StyledHeader>{txt}</StyledHeader>
+      <StyledHeader>Acme Store</StyledHeader>
       <MiniCart onClick={() => toggleCart()}>      
       <Basket />
       <Counter />
@@ -52,7 +51,6 @@ const Header = ({
 )
 
 Header.propTypes = {
-  txt: PropTypes.string,
   toggleCart: PropTypes.func.isRequired
 }
 

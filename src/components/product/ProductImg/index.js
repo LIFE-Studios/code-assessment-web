@@ -7,7 +7,7 @@ const Img = styled.img`
   border-radius: 0 5px 0 0; 
   max-width: ${props => props.cart ? '156px;' : '100%'};
   height: inherit;
-  width: ${props => props.cart ? '25%' : '100%'};
+  width: ${props => props.cart ? '33%' : '100%'};
   
   @media ${breakpoints.tablet} {
     border-radius: 0;
@@ -27,6 +27,7 @@ const ProductImg = ({ title, cart }) =>
   />
 
 ProductImg.propTypes = {
+  cart: PropTypes.bool,
   title: PropTypes.string.isRequired
 }
 

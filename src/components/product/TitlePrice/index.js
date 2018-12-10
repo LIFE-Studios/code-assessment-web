@@ -44,6 +44,7 @@ const TitlePrice = ({ cart, title, price }) => (
 )
 
 TitlePrice.propTypes = {
+  cart: PropTypes.bool,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired
 }

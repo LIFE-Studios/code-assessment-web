@@ -37,6 +37,7 @@ const ProductItem = ({
 )
 
 ProductItem.propTypes = {
+  cart: PropTypes.bool,
   quantity: PropTypes.number,
   product: PropTypes.shape({
     inventory: PropTypes.number.isRequired,
