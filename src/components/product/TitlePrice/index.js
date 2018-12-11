@@ -38,7 +38,7 @@ const TitlePrice = ({ cart, title, price }) => (
       {title}
     </Title>
     <Price cart={cart}>
-      &#36;{price}
+      &#36;{price.value}
     </Price>
   </Container> 
 )
@@ -46,7 +46,10 @@ const TitlePrice = ({ cart, title, price }) => (
 TitlePrice.propTypes = {
   cart: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired
+  price: PropTypes.shape({
+    value: PropTypes.number,
+    currency: PropTypes.string,
+  }).isRequired
 }
 
 export default TitlePrice

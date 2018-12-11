@@ -47,7 +47,10 @@ const ProductRow = ({
 ProductRow.propTypes = {
   cart: PropTypes.bool,
   inventory: PropTypes.number,
-  price: PropTypes.number,  
+  price: PropTypes.shape({
+    value: PropTypes.number,
+    currency: PropTypes.string,
+  }), 
   title: PropTypes.string,
   quantity: PropTypes.number,  
   onAddToCartClicked: PropTypes.func,

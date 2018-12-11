@@ -21,7 +21,7 @@ const ProductItem = ({
       onRemoveFromCartClicked={onRemoveFromCartClicked}
       cart={cart}
       id={product.id}
-      title={product.title}
+      title={product.productTitle}
       price={product.price}
       inventory={product.inventory} />    
     {cart && 
@@ -42,8 +42,11 @@ ProductItem.propTypes = {
   product: PropTypes.shape({
     inventory: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired
+    price: PropTypes.shape({
+      value: PropTypes.number,
+      currency: PropTypes.string,
+    }).isRequired,
+    productTitle: PropTypes.string.isRequired
   }).isRequired,
   onAddToCartClicked: PropTypes.func.isRequired,
   onRemoveItemFromCartClicked: PropTypes.func.isRequired,

@@ -31,7 +31,10 @@ Product.propTypes = {
   product: PropTypes.shape({
     inventory: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
+    price: PropTypes.shape({
+      value: PropTypes.number,
+      currency: PropTypes.string,
+    }).isRequired,
     title: PropTypes.string.isRequired
   })
 }
